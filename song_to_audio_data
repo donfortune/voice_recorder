@@ -1,0 +1,14 @@
+import numpy as np
+from pydub import AudioSegment
+
+
+audio = AudioSegment.from_file("Rayvanny_-_Happy_Birthday.mp3")  #load the data 
+audio_data = np.array(audio.get_array_of_samples())
+
+normalized_audio_data = audio_data / (2 ** 15)
+
+print("Shape of the array:", normalized_audio_data.shape)
+
+duration_seconds = len(normalized_audio_data) / audio.frame_rate
+
+print("Total duration of audio data:", duration_seconds, "seconds")
